@@ -25,6 +25,7 @@ Aequus is composed of a Raspbery Pi that acts like a master to control 6 MPU6050
     - choose the preferences (Duration, Difficulty)
     - click on start
     - wait the connection of all the sensors
-    - play
+    - play!
 
 - Video:
+    -video
