@@ -21,6 +21,9 @@ Aequus is composed of a Raspbery Pi that acts like a master to control 6 MPU6050
     ```
 
 - Run DiSfida_APP.py
+     ```sh
+    $ python3 DiSfida_APP.py
+    ```
     - click on training
     - choose the preferences (Duration, Difficulty)
     - click on start
