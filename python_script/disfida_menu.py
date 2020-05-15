@@ -7,6 +7,9 @@ from math import sqrt
 import os
 import pygame
 
+from HangGlider_game import *
+
+
 # Pygame constants
 W_SIZE = 480            # Width in pixel
 H_SIZE = 320            # Height in pixel
@@ -279,8 +282,8 @@ class Pref_menu(object):
     def __init__(self, surface, dur, diff):
         """Init Pref_menu class."""
         self.surface = surface
-        self.durata = dur
-        self.difficolta = diff
+        self.duration = dur
+        self.difficulty = diff
         surface.fill(GREY)
         self.pointlist = self.get_point()
         self.back = pygame.image.load("../images/back.png")
@@ -391,21 +394,21 @@ class Pref_menu(object):
     def diff_selection(self):
         """Print the selected difficulty."""
         pygame.draw.rect(self.surface, LIGHTBLUE2, self.pointlist[44], 0)
-        if self.difficolta == "Low":
+        if self.difficulty == "Low":
             pygame.draw.rect(self.surface, BLACK, self.pointlist[26], 0)
             pygame.draw.rect(self.surface, GREY3, self.pointlist[27], 0)
             pygame.draw.rect(self.surface, BLACK, self.pointlist[28], 0)
             pygame.draw.rect(self.surface, BLACK, self.pointlist[29], 0)
             pygame.draw.rect(self.surface, GREY2, self.pointlist[30], 0)
             pygame.draw.rect(self.surface, GREY2, self.pointlist[31], 0)
-        elif self.difficolta == "Medium":
+        elif self.difficulty == "Medium":
             pygame.draw.rect(self.surface, BLACK, self.pointlist[32], 0)
             pygame.draw.rect(self.surface, GREY3, self.pointlist[33], 0)
             pygame.draw.rect(self.surface, BLACK, self.pointlist[34], 0)
             pygame.draw.rect(self.surface, BLACK, self.pointlist[35], 0)
             pygame.draw.rect(self.surface, GREY2, self.pointlist[36], 0)
             pygame.draw.rect(self.surface, GREY2, self.pointlist[37], 0)
-        elif self.difficolta == "High":
+        elif self.difficulty == "High":
             pygame.draw.rect(self.surface, BLACK, self.pointlist[38], 0)
             pygame.draw.rect(self.surface, GREY3, self.pointlist[39], 0)
             pygame.draw.rect(self.surface, BLACK, self.pointlist[40], 0)
@@ -421,10 +424,10 @@ class Pref_menu(object):
         """Print the selected duration."""
         pygame.draw.rect(self.surface, WHITE, self.pointlist[6], 0)
         pygame.draw.rect(self.surface, GREY, self.pointlist[7], round(1 * Screen_scale))
-        if int(self.durata / 10) == 0:
-            num = self.font3.render("0" + str(self.durata), True, BLACK)
+        if int(self.duration / 10) == 0:
+            num = self.font3.render("0" + str(self.duration), True, BLACK)
         else:
-            num = self.font3.render(str(self.durata), True, BLACK)
+            num = self.font3.render(str(self.duration), True, BLACK)
         self.surface.blit(num, self.pointlist[25][0])
         pygame.display.flip()
 
@@ -432,25 +435,25 @@ class Pref_menu(object):
         """Controls of the preference menu."""
         if self.check_low(posx, posy):
             print("Difficulty: Low")
-            self.difficolta = "Low"
+            self.difficulty = "Low"
             self.diff_selection()
         if self.check_medium(posx, posy):
             print("Difficulty: Medium")
-            self.difficolta = "Medium"
+            self.difficulty = "Medium"
             self.diff_selection()
         if self.check_high(posx, posy):
             print("Difficulty: High")
-            self.difficolta = "High"
+            self.difficulty = "High"
             self.diff_selection()
         if self.check_plus(posx, posy):
-            if self.durata < 60:
-                self.durata += 5
-                print("Duration: " + str(self.durata) + " min")
+            if self.duration < 60:
+                self.duration += 5
+                print("Duration: " + str(self.duration) + " min")
             self.draw_numbers()
         if self.check_minus(posx, posy):
-            if self.durata > 5:
-                self.durata -= 5
-                print("Duration: " + str(self.durata) + " min")
+            if self.duration > 5:
+                self.duration -= 5
+                print("Duration: " + str(self.duration) + " min")
             self.draw_numbers()
         if self.check_back(posx, posy):
             print("Back")
@@ -528,32 +531,53 @@ class Init_menu:
         self.surface.fill(GREY)
         self.division = H_SIZE / 5 - 5
         self.radius = 30
-        self.difficolta = diff
-        self.durata = str(dur) + " min"
+        self.difficulty = diff
+        self.duration = str(dur) + " min"
         self.pointlist = self.get_point()
         self.font1 = pygame.font.SysFont(name="Terminal", size=round(Screen_scale * 60))
         self.font2 = pygame.font.SysFont(name="Terminal", size=round(Screen_scale * 40))
-        pygame.draw.rect(surface, LIGHTBLUE, self.pointlist[0])
-        pygame.draw.rect(surface, LIGHTBLUE, self.pointlist[1])
-        pygame.draw.rect(surface, LIGHTBLUE, self.pointlist[2])
-        pygame.draw.rect(surface, LIGHTBLUE, self.pointlist[3])
-        pygame.draw.rect(surface, LIGHTGREY, self.pointlist[4])
-        pygame.draw.rect(surface, LIGHTGREY, self.pointlist[5])
-        pygame.draw.rect(surface, LIGHTGREY, self.pointlist[6])
-        self.back = pygame.image.load("../images/back.png")
-        self.start = pygame.image.load("../images/start.png")
+        self.font3 = pygame.font.SysFont(name="Terminal", size=round(Screen_scale * 60))
+        pygame.draw.rect(self.surface, [LIGHTBLUE[0] + 20, LIGHTBLUE[1] + 20, LIGHTBLUE[2] + 20], self.pointlist[0])
+        pygame.draw.rect(self.surface, [LIGHTBLUE[0] - 25, LIGHTBLUE[1] - 25, LIGHTBLUE[2] - 25], self.pointlist[1])
+        pygame.draw.rect(self.surface, [LIGHTBLUE[0] - 25, LIGHTBLUE[1] - 25, LIGHTBLUE[2] - 25], self.pointlist[2])
+        pygame.draw.rect(self.surface, [LIGHTBLUE[0] - 25, LIGHTBLUE[1] - 25, LIGHTBLUE[2] - 25], self.pointlist[3])
+        pygame.draw.rect(self.surface, LIGHTGREY, self.pointlist[4])
+        pygame.draw.rect(self.surface, LIGHTGREY, self.pointlist[5])
+        pygame.draw.rect(self.surface, LIGHTGREY, self.pointlist[6])
+        self.ese1_shadow = self.font3.render("Canyon flight     1' 00''", True, BLACK)
+        self.ese2_shadow = self.font3.render("Giant slalom      1' 30''", True, BLACK)
+        self.ese3_shadow = self.font3.render("Equilibrist               30''", True, BLACK)
+        self.ese4_shadow = self.font3.render("Olympic dives         30''", True, BLACK)
+        self.ese1 = self.font3.render("Canyon flight     1' 00''", True, LIGHTGREY)
+        self.ese2 = self.font3.render("Giant slalom      1' 30''", True, LIGHTGREY)
+        self.ese3 = self.font3.render("Equilibrist               30''", True, LIGHTGREY)
+        self.ese4 = self.font3.render("Olympic dives         30''", True, LIGHTGREY)
+        self.surface.blit(self.ese1_shadow, self.pointlist[17][0])
+        self.surface.blit(self.ese2_shadow, self.pointlist[18][0])
+        self.surface.blit(self.ese3_shadow, self.pointlist[19][0])
+        self.surface.blit(self.ese4_shadow, self.pointlist[20][0])
+        self.surface.blit(self.ese1, self.pointlist[13][0])
+        self.surface.blit(self.ese2, self.pointlist[14][0])
+        self.surface.blit(self.ese3, self.pointlist[15][0])
+        self.surface.blit(self.ese4, self.pointlist[16][0])
+        self.back = pygame.image.load("../Images/back.png")
+        self.start = pygame.image.load("../Images/start.png")
         self.back = pygame.transform.scale(self.back, (round(60 * Screen_scale), round(60 * Screen_scale)))
         self.start = pygame.transform.scale(self.start, (round(46 * Screen_scale), round(46 * Screen_scale)))
-        Text_dif = self.font2.render("Difficulty: ", True, BLACK)
-        Text_dur = self.font2.render("Duration: ", True, BLACK)
-        Text_dif_var = self.font2.render(self.difficolta, True, BLUE)
-        Text_dur_var = self.font2.render(self.durata, True, BLUE)
-        surface.blit(Text_dif, self.pointlist[7][0])
-        surface.blit(Text_dur, self.pointlist[8][0])
-        surface.blit(Text_dif_var, self.pointlist[9][0])
-        surface.blit(Text_dur_var, self.pointlist[10][0])
-        surface.blit(self.back, self.pointlist[11][0])
-        surface.blit(self.start, self.pointlist[12][0])
+        self.Text_dif = self.font2.render("Difficoltà: ", True, BLACK)
+        self.Text_dur = self.font2.render("duration: ", True, BLACK)
+        self.Text_dif_var = self.font2.render(self.difficulty, True, BLACK)
+        self.Text_dur_var = self.font2.render(self.duration, True, BLACK)
+        self.Text_dif_var_shadow = self.font2.render(self.difficulty, True, WHITE)
+        self.Text_dur_var_shadow = self.font2.render(self.duration, True, WHITE)
+        self.surface.blit(self.Text_dif, self.pointlist[7][0])
+        self.surface.blit(self.Text_dur, self.pointlist[8][0])
+        self.surface.blit(self.Text_dif_var_shadow, self.pointlist[21][0])
+        self.surface.blit(self.Text_dur_var_shadow, self.pointlist[22][0])
+        self.surface.blit(self.Text_dif_var, self.pointlist[9][0])
+        self.surface.blit(self.Text_dur_var, self.pointlist[10][0])
+        self.surface.blit(self.back, self.pointlist[11][0])
+        self.surface.blit(self.start, self.pointlist[12][0])
         pygame.display.flip()
 
     def get_point(self):
@@ -571,7 +595,17 @@ class Init_menu:
         list10 = [[268, 34]]
         list11 = [[24, 0]]
         list12 = [[400, 8]]
-        list = [list0, list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12]
+        list13 = [[11, 74.0]]
+        list14 = [[10, 139.0]]
+        list15 = [[10, 205.0]]
+        list16 = [[12, 269.0]]
+        list17 = [[12, 75.0]]
+        list18 = [[11, 140.0]]
+        list19 = [[11, 206.0]]
+        list20 = [[13, 270.0]]
+        list21 = [[269, 5]]
+        list22 = [[269, 35]]
+        list = [list0, list1, list2, list3, list4, list5, list6, list7, list8, list9, list10, list11, list12, list13, list14, list15, list16, list17, list18, list19, list20, list21, list22]
         list = self.scale_point(list, Screen_scale)
         return list
 
@@ -782,15 +816,13 @@ def select_menu(posx, posy):
         elif MENU_STATUS == "Preference":
             Menu_APP = Pref_menu(Surface)
         else:
-            Duration = Menu_APP.durata
-            Difficulty = Menu_APP.difficolta
+            Duration = Menu_APP.duration
+            Difficulty = Menu_APP.difficulty
     elif Menu_APP.__class__.__name__ == "Init_menu":
         if MENU_STATUS == "Back":
             Menu_APP = Train_menu(Surface)
-        '''
         elif MENU_STATUS == "Start":
-            Menu_APP = Init_menu(Surface, Difficulty, Duration)
-        '''
+            Canyon_flight(Surface, Screen_scale)
 
 
 if __name__ == "__main__":
@@ -801,7 +833,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('AEQUUS TRAINING APP')
 
     # Create pygame display
-    Surface = pygame.display.set_mode((round(W_SIZE * Screen_scale), round(H_SIZE * Screen_scale)))
+    Surface = pygame.display.set_mode((round(W_SIZE * Screen_scale), round(H_SIZE * Screen_scale)), pygame.FULLSCREEN)
 
     # Init training values prefereces (default)
     Difficulty = "Low"
