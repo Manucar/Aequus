@@ -51,16 +51,15 @@ Aequus is a proof of concept solution composed by a [Raspbery Pi](https://www.ra
     - wait the connection of all the sensors
     - play!
 
-## Photos
-
-<p>
-  <img height="350" src="img/prototype.jpg" align="left">
-  <img height="350" src="img/wear_prototype.jpg" align="right">
-</p>
-
 ## Demo
 
-<p align="center">
+<p>
+  <img height="350" src="img/prototype.jpg" style="float: left">
+  <img height="350" src="img/wear_prototype.jpg" style="float: right">
+  <br>
+</p>
+
+<p>
   <img height="500" src="img/aequus.gif">
 </p>
 
