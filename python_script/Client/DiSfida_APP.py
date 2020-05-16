@@ -31,12 +31,12 @@ from disfida_menu import Setup_menu
 from disfida_menu import Train_menu
 
 # File path for sensors calibration
-mpu0_path = "../Calibration/mpu0_cal.txt"
-mpu1_path = "../Calibration/mpu1_cal.txt"
-mpu2_path = "../Calibration/mpu2_cal.txt"
-mpu3_path = "../Calibration/mpu3_cal.txt"
-mpu4_path = "../Calibration/mpu4_cal.txt"
-mpu5_path = "../Calibration/mpu5_cal.txt"
+mpu0_path = "../../Calibration/mpu0_cal.txt"
+mpu1_path = "../../Calibration/mpu1_cal.txt"
+mpu2_path = "../../Calibration/mpu2_cal.txt"
+mpu3_path = "../../Calibration/mpu3_cal.txt"
+mpu4_path = "../../Calibration/mpu4_cal.txt"
+mpu5_path = "../../Calibration/mpu5_cal.txt"
 
 # Pygame constants
 W_SIZE = 480            # Width in pixel

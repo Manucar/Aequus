@@ -18,15 +18,6 @@ serverPort = 8866
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverSocket.bind(('', serverPort))
 
-
-# Path name of Calibration files
-mpu0_path = "../Calibration/mpu0_cal.txt"
-mpu1_path = "../Calibration/mpu1_cal.txt"
-mpu2_path = "../Calibration/mpu2_cal.txt"
-mpu3_path = "../Calibration/mpu3_cal.txt"
-mpu4_path = "../Calibration/mpu4_cal.txt"
-mpu5_path = "../Calibration/mpu5_cal.txt"
-
 # Muc constants
 i2c_bus = 1
 mux_address = 0x70
@@ -67,7 +58,7 @@ def read_data(q_mpu, q_addr):
                 serverSocket.sendto(messagge.encode(), clientAddress)
         elif(tag == "#MPU#"):
             name = message.strip("#MPU#")
-            mpu = mpu_sensor(str(name), "../Calibration/" + str(name) + "_cal.txt")
+            mpu = mpu_sensor(str(name), "../../Calibration/" + str(name) + "_cal.txt")
             coef = wait(mpu)
             q_mpu.get()
             q_mpu.put(mpu)

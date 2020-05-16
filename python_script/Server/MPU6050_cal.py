@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     # Select which sensor to calibrate
     channel, calibration_time = user_input()
-    mpu_path = "../Calibration/mpu" + str(channel) + "_cal.txt"
+    mpu_path = "../../Calibration/mpu" + str(channel) + "_cal.txt"
 
     # Mux init
     mux = multiplex(i2c_bus)

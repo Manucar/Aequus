@@ -10,12 +10,12 @@ mux_address = 0x70
 dev_address = 0x68
 
 # File path for calibration
-mpu0_path = "../Calibration/mpu0_cal.txt"
-mpu1_path = "../Calibration/mpu1_cal.txt"
-mpu2_path = "../Calibration/mpu2_cal.txt"
-mpu3_path = "../Calibration/mpu3_cal.txt"
-mpu4_path = "../Calibration/mpu4_cal.txt"
-mpu5_path = "../Calibration/mpu5_cal.txt"
+mpu0_path = "../../Calibration/mpu0_cal.txt"
+mpu1_path = "../../Calibration/mpu1_cal.txt"
+mpu2_path = "../../Calibration/mpu2_cal.txt"
+mpu3_path = "../../Calibration/mpu3_cal.txt"
+mpu4_path = "../../Calibration/mpu4_cal.txt"
+mpu5_path = "../../Calibration/mpu5_cal.txt"
 
 
 class mpu_sensor(MPU6050):
@@ -63,10 +63,8 @@ class mpu_sensor(MPU6050):
         # If overflow is detected by status or fifo count we want to reset
         if (self.FIFO_count == 1024) or (self.int_status & 0x10):
             self.reset_FIFO()
-            # print('overflow!')
         elif (self.FIFO_count % self.packet_size != 0):
             self.reset_FIFO()
-            #print('packet corrupted!')
         # Check if fifo data is ready
         elif (self.int_status & 0x02):
             # Wait until packet_size number of bytes are ready for reading, default
@@ -75,7 +73,6 @@ class mpu_sensor(MPU6050):
                 self.FIFO_count = self.get_FIFO_count()
             self.FIFO_buffer = self.get_FIFO_bytes(self.packet_size)
             self.quat = self.DMP_get_quaternion_int16(self.FIFO_buffer)
-            #print("SENSOR: " + self.name + " w: " + str(self.quat.w) + " x: " + str(self.quat.x) + " y: " + str(self.quat.y) + " z: " + str(self.quat.z))
             tmp_quat = [self.quat.w, self.quat.x, self.quat.y, self.quat.z]
             tmp_gravity = self.DMP_get_gravity(self.quat)
             return tmp_quat, tmp_gravity

@@ -204,12 +204,12 @@ class GroupCoins(object):
         self.count = 0
         self.last_obs = ""
         self.flag = True
-        self.coin0 = pygame.image.load("../Images/coin0.png")
-        self.coin1 = pygame.image.load("../Images/coin1.png")
-        self.coin2 = pygame.image.load("../Images/coin2.png")
-        self.coin3 = pygame.image.load("../Images/coin3.png")
-        self.coin4 = pygame.image.load("../Images/coin4.png")
-        self.coin5 = pygame.image.load("../Images/coin5.png")
+        self.coin0 = pygame.image.load("../../images/coin0.png")
+        self.coin1 = pygame.image.load("../../images/coin1.png")
+        self.coin2 = pygame.image.load("../../images/coin2.png")
+        self.coin3 = pygame.image.load("../../images/coin3.png")
+        self.coin4 = pygame.image.load("../../images/coin4.png")
+        self.coin5 = pygame.image.load("../../images/coin5.png")
         self.coin0 = pygame.transform.scale(self.coin0, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
         self.coin1 = pygame.transform.scale(self.coin1, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
         self.coin2 = pygame.transform.scale(self.coin2, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
@@ -339,13 +339,13 @@ class Background(object):
         self.elements_dx = {}
         self.num_ele = 6
         self.num_isle = 2
-        self.bush1 = pygame.image.load("../Images/bush1.png")
+        self.bush1 = pygame.image.load("../../images/bush1.png")
         self.bush1 = pygame.transform.scale(self.bush1, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
-        self.bush2 = pygame.image.load("../Images/bush2.png")
+        self.bush2 = pygame.image.load("../../images/bush2.png")
         self.bush2 = pygame.transform.scale(self.bush2, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
-        self.cactus = pygame.image.load("../Images/cactus.png")
+        self.cactus = pygame.image.load("../../images/cactus.png")
         self.cactus = pygame.transform.scale(self.cactus, (round(30 * self.Screen_scale), round(55 * self.Screen_scale)))
-        self.landslide = pygame.image.load("../Images/landslide.png")
+        self.landslide = pygame.image.load("../../images/landslide.png")
         self.landslide = pygame.transform.scale(self.landslide, (round(30 * self.Screen_scale), round(30 * self.Screen_scale)))
         self.img_list = {"bush1": self.bush1, "bush2": self.bush2, "cactus": self.cactus, "landslide": self.landslide}
         self.create_elements_sx()
@@ -552,7 +552,7 @@ def Buzzer_beep(freq, dur):
 def Canyon_flight(Surface, scale):
     """Aequus minigame app: Canyon flight."""
     # Load game music
-    dir_beep = "../Music/beep.mp3"
+    dir_beep = "../../Music/beep.mp3"
     pygame.mixer.music.load(dir_beep)
     pygame.mixer.music.set_volume(1.0)
 
