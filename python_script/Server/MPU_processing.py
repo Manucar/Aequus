@@ -10,12 +10,12 @@ mux_address = 0x70
 dev_address = 0x68
 
 # File path for calibration
-mpu0_path = "../../Calibration/mpu0_cal.txt"
-mpu1_path = "../../Calibration/mpu1_cal.txt"
-mpu2_path = "../../Calibration/mpu2_cal.txt"
-mpu3_path = "../../Calibration/mpu3_cal.txt"
-mpu4_path = "../../Calibration/mpu4_cal.txt"
-mpu5_path = "../../Calibration/mpu5_cal.txt"
+mpu0_path = "Calibration/mpu0_cal.txt"
+mpu1_path = "Calibration/mpu1_cal.txt"
+mpu2_path = "Calibration/mpu2_cal.txt"
+mpu3_path = "Calibration/mpu3_cal.txt"
+mpu4_path = "Calibration/mpu4_cal.txt"
+mpu5_path = "Calibration/mpu5_cal.txt"
 
 
 class mpu_sensor(MPU6050):

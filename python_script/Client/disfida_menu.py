@@ -18,7 +18,7 @@ FPS = 60                # Frame per second
 # Screen resolution calculation
 pygame.init()
 infoObject = pygame.display.Info()
-Screen_scale = (infoObject.current_h / H_SIZE)
+Screen_scale = (infoObject.current_h / H_SIZE) * 0.7
 
 # Colors
 WHITE = (255, 255, 255)
@@ -166,7 +166,7 @@ class Train_menu(object):
         """initialization of Train_menu class."""
         surface.fill(GREY)
         self.pointlist = self.get_point(12, 3)
-        self.home = pygame.image.load("../../images/home.png")
+        self.home = pygame.image.load("images/home.png")
         self.home = pygame.transform.scale(self.home, (round(62 * Screen_scale), round(53 * Screen_scale)))
         self.font1 = pygame.font.SysFont(name="Terminal", size=round(60 * Screen_scale))
         self.font2 = pygame.font.SysFont(name="Terminal", size=round(100 * Screen_scale))
@@ -286,7 +286,7 @@ class Pref_menu(object):
         self.difficulty = diff
         surface.fill(GREY)
         self.pointlist = self.get_point()
-        self.back = pygame.image.load("../../images/back.png")
+        self.back = pygame.image.load("images/back.png")
         self.back = pygame.transform.scale(self.back, (round(60 * Screen_scale), round(60 * Screen_scale)))
         self.font1 = pygame.font.SysFont(name="Terminal", size=round(60 * Screen_scale))
         self.font2 = pygame.font.SysFont(name="Terminal", size=round(60 * Screen_scale))
@@ -560,8 +560,8 @@ class Init_menu:
         self.surface.blit(self.ese2, self.pointlist[14][0])
         self.surface.blit(self.ese3, self.pointlist[15][0])
         self.surface.blit(self.ese4, self.pointlist[16][0])
-        self.back = pygame.image.load("../../Images/back.png")
-        self.start = pygame.image.load("../../Images/start.png")
+        self.back = pygame.image.load("Images/back.png")
+        self.start = pygame.image.load("Images/start.png")
         self.back = pygame.transform.scale(self.back, (round(60 * Screen_scale), round(60 * Screen_scale)))
         self.start = pygame.transform.scale(self.start, (round(46 * Screen_scale), round(46 * Screen_scale)))
         self.Text_dif = self.font2.render("Difficoltà: ", True, BLACK)

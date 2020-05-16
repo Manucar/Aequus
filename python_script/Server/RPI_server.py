@@ -58,7 +58,7 @@ def read_data(q_mpu, q_addr):
                 serverSocket.sendto(messagge.encode(), clientAddress)
         elif(tag == "#MPU#"):
             name = message.strip("#MPU#")
-            mpu = mpu_sensor(str(name), "../../Calibration/" + str(name) + "_cal.txt")
+            mpu = mpu_sensor(str(name), "Calibration/" + str(name) + "_cal.txt")
             coef = wait(mpu)
             q_mpu.get()
             q_mpu.put(mpu)
