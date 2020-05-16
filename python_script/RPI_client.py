@@ -33,7 +33,7 @@ class MultiplexCommands(object):
         raw_msg, serverAddress = clientSocket.recvfrom(2048)
         print(raw_msg)
         if self.parser(raw_msg):
-            print("Mux Inizializzato")
+            print("Mux Initialized")
 
     def switch_channel(self, channel=0):
         """Methods for sending to the raspberry the mux channel."""
@@ -66,7 +66,7 @@ class MPUCommands(object):
         clientSocket.sendto(msg.encode(), (serverName, serverPort))
         raw_msg, serverAddress = clientSocket.recvfrom(2048)
         if self.parser(raw_msg):
-            print("MPU" + str(self.__name__) + ": INITIALIZE")
+            print("MPU" + str(self.__name__) + ": INITIALIZED")
 
     def read_value(self, queue):
         """Read value from the sensors."""
