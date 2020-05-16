@@ -28,7 +28,7 @@ Aequus is a proof of concept solution composed by a [Raspbery Pi](https://www.ra
     ```
 - Connect all the sensors to a I2C Mux Expander and place them along a back strap
 
-- Connect both your PC and Raspberry Pi to the same Wi-Fi network, or setup the Raspberry Pi as a [standalone access point](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/)(no internet connection needed)
+- Connect both your PC and Raspberry Pi to the same Wi-Fi network, or setup the Raspberry Pi as a [standalone access point](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/) (no internet connection needed)
 
 - Change the serverName in RPI_client.py according to your Raspberry Pi IP address, just type on a terminal:
    ```sh
@@ -53,7 +53,7 @@ Aequus is a proof of concept solution composed by a [Raspbery Pi](https://www.ra
 
 ## Demo
 
-<p>
+<p align="center">
   <img height="365" src="img/prototype.jpg" style="float: left">
   <img height="365" src="img/wear_prototype.jpg" style="float: right">
 </p>
